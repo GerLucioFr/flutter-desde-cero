@@ -1,3 +1,4 @@
+import 'package:facebook/facebook_ui/widgets/avatar.dart';
 import 'package:facebook/models/story.dart';
 import 'package:flutter/material.dart';
 
@@ -40,18 +41,79 @@ class StoriesPreview extends StatelessWidget {
     return SizedBox(
       height: 168,
       child: ListView.builder(
-        
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
           final story = _stories[index];
-          return Container(
-            width: 64,
-            height: double.infinity,
-            color: Colors.grey,
+          return StoryPreview(
+            story: story,
+            index: index,
           );
         },
         itemCount: _stories.length,
       ),
+    );
+  }
+}
+
+class StoryPreview extends StatelessWidget {
+  const StoryPreview({
+    super.key,
+    required this.story,
+    required this.index,
+  });
+
+  final Story story;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.only(
+            left: index == 0 ? 12 : 6,
+            right: index == _stories.length - 1 ? 12 : 6,
+          ),
+          width: 80,
+          height: 140,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Container(
+                width: 80,
+                height: 124,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: AssetImage(
+                      '$imagePath${story.image}',
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                child: Avatar(
+                  size: 40,
+                  asset: '$avatarPath${story.avatar}',
+                  border: 2,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Center(
+            child: Text(
+              story.username,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

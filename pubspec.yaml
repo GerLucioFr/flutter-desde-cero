@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.10+1
   device_preview: ^1.2.0
+  faker: ^2.1.0
+  timeago: ^3.6.1
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -117,6 +120,28 @@ flutter:
     - family: CustomFacebookIcons
       fonts: 
         - asset: assets/icons/CustomFacebookIcons/CustomFacebookIcons.ttf
+
+    - family: Rubik Light
+      fonts:
+        - asset: assets/fonts/Rubik/Rubik-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Rubik/Rubik-LightItalic.ttf
+          weight: 300
+          style: italic
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/Rubik/Rubik-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Rubik/Rubik-Italic.ttf
+          weight: 400
+          style: italic
+    - family: Rubik Black
+      fonts:
+        - asset: assets/fonts/Rubik/Rubik-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Rubik/Rubik-BlackItalic.ttf
+          weight: 900
+          style: italic
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
